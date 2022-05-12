@@ -70,6 +70,14 @@ body::before {
     transition: transform 1s ease;
 }
 
+.card#spider-man-01 .card__image {
+    transform-origin: 100% 0;
+}
+
+.card#spider-man-03 .card__image {
+    transform-origin: 50% 0;
+}
+
 .card__title {
     position: absolute;
     bottom: 0;
@@ -127,8 +135,12 @@ body::before {
 }
 
 .card--hovered .card__image {
-    transform: scale(1.4);
+    transform: scale(1.1);
     filter: drop-shadow(30px 10px 4px rgba(0,0,0,.5));
+}
+
+.card--hovered#spider-man-03 .card__image {
+    transform: scale(1.15);
 }
 
 body#spider-man-01-hovered::before {
