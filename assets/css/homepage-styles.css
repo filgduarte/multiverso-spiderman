@@ -43,14 +43,56 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    perspective: 4000px;
+}
+
+.cards-carousel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    width: calc(100vw / 3 - 10%);
+    height: 100vh;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
 }
 
 .card {
-    position: relative;
-    border: 0.5rem solid #FFF;
-    width: calc(100% / 3 - 8%);
+    position: absolute;
+    width: 100%;
     height: 70vh;
-    transition: filter .5 ease;
+    border: 0.5rem solid #FFF;
+    filter: brightness(0.75);
+    transition: transform 1s ease,
+                filter 1s ease;
+}
+
+.card:nth-child(1) {
+    transform: rotateY(0) translateZ(40vw) scaleX(-1);
+}
+
+.card:nth-child(2) {
+    transform: rotateY(120deg) translateZ(40vw) scaleX(-1);
+}
+
+.card:nth-child(3) {
+    transform: rotateY(240deg) translateZ(40vw) scaleX(-1);
+}
+
+.card.card--active:nth-child(1) {
+    transform: rotateY(0) translateZ(40vw) scaleX(1);
+}
+
+.card.card--active:nth-child(2) {
+    transform: rotateY(120deg) translateZ(40vw) scaleX(1);
+}
+
+.card.card--active:nth-child(3) {
+    transform: rotateY(240deg) translateZ(40vw) scaleX(1);
+}
+
+.card--active {
+    filter: brightness(1);
 }
 
 .card__background {
@@ -70,14 +112,6 @@ body::before {
     transition: transform 1s ease;
 }
 
-.card#spider-man-01 .card__image {
-    transform-origin: 100% 0;
-}
-
-.card#spider-man-03 .card__image {
-    transform-origin: 50% 0;
-}
-
 .card__title {
     position: absolute;
     bottom: 0;
@@ -89,11 +123,12 @@ body::before {
 }
 
 .controller {
-    position: relative;
+    position: absolute;
+    bottom: 1.5rem;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
 }
 
 .controller__button {
@@ -121,6 +156,13 @@ body::before {
     transform: scale(1.1);
 }
 
+.controller__button--active {
+    background-color: #FFF;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 0 2px  #FFF;
+}
+
 .controller__line {
     position: absolute;
     background-color: #FFF;
@@ -135,8 +177,8 @@ body::before {
 }
 
 .card--hovered .card__image {
-    transform: scale(1.1);
-    filter: drop-shadow(30px 10px 4px rgba(0,0,0,.5));
+    transform: scale(1.3);
+    filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, .5));
 }
 
 .card--hovered#spider-man-03 .card__image {
