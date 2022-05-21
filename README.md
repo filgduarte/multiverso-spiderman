@@ -1,3 +1,7 @@
 # :spider: Multiverso Spider Man
 
-Páginas criadas na live coding de HTML, CSS e JavaScript da DIO ministrada pela @micheleambrosio e pelo @diogomainardes. Segui o código desenvolvido por eles, mas fiz algumas alterações ao meu gosto.
+Versão 2 do site criado numa live coding da Dio.
+
+Tive umas ideias que modificam bastante a estrutura do original e resolvi criar um novo repositório.
+
+Versão 1: https://github.com/filgduarte/dio-spiderman
