@@ -27,9 +27,26 @@ body::before {
 }
 
 .menu__item {
+    position: relative;
     display: inline-block;
     text-transform: uppercase;
     margin: 0 1.25rem;
+}
+
+.menu__item:not(.menu__icon)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    transform: scaleX(0);
+    transition: transform .5s ease;
+}
+
+.menu__item:not(.menu__icon):hover::after {
+    transform: scaleX(1);
 }
 
 .menu__icon {
@@ -51,7 +68,7 @@ body::before {
     display: flex;
     justify-content: center;
     margin-top: 5vh;
-    width: calc(100vw / 3 - 10%);
+    width: 30vw;
     height: 100vh;
     transform-style: preserve-3d;
     transition: transform 1s ease;
@@ -68,27 +85,27 @@ body::before {
 }
 
 .card:nth-child(1) {
-    transform: rotateY(0) translateZ(40vw) scaleX(-1);
+    transform: rotateY(0) translateZ(45vw) scaleX(-1);
 }
 
 .card:nth-child(2) {
-    transform: rotateY(120deg) translateZ(40vw) scaleX(-1);
+    transform: rotateY(120deg) translateZ(45vw) scaleX(-1);
 }
 
 .card:nth-child(3) {
-    transform: rotateY(240deg) translateZ(40vw) scaleX(-1);
+    transform: rotateY(240deg) translateZ(45vw) scaleX(-1);
 }
 
 .card.card--active:nth-child(1) {
-    transform: rotateY(0) translateZ(40vw) scaleX(1);
+    transform: rotateY(0) translateZ(45vw) scaleX(1);
 }
 
 .card.card--active:nth-child(2) {
-    transform: rotateY(120deg) translateZ(40vw) scaleX(1);
+    transform: rotateY(120deg) translateZ(45vw) scaleX(1);
 }
 
 .card.card--active:nth-child(3) {
-    transform: rotateY(240deg) translateZ(40vw) scaleX(1);
+    transform: rotateY(240deg) translateZ(45vw) scaleX(1);
 }
 
 .card--active {
@@ -132,6 +149,7 @@ body::before {
 }
 
 .controller__button {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +163,8 @@ body::before {
     font-weight: bold;
     cursor: pointer;
     z-index: 1;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
 .controller__button:nth-child(2) {
@@ -156,11 +175,26 @@ body::before {
     transform: scale(1.1);
 }
 
+.controller__button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    border-radius: 50%;
+    transform: scale(0);
+    z-index: -1;
+    transition: transform .5s ease;
+}
+
 .controller__button--active {
-    background-color: #FFF;
     color: var(--primary-color);
     border: 3px solid var(--primary-color);
     box-shadow: 0 0 0 2px  #FFF;
+}
+
+.controller__button--active::before {
+    transform: scale(1);
 }
 
 .controller__line {
@@ -171,17 +205,17 @@ body::before {
 }
 
 /* Hover Animation */
-.card--hovered .card__background {
+.card:hover .card__background {
     cursor: pointer;
     opacity: 0;
 }
 
-.card--hovered .card__image {
+.card:hover .card__image {
     transform: scale(1.3);
     filter: drop-shadow(30px 10px 4px rgba(0, 0, 0, .5));
 }
 
-.card--hovered#spider-man-03 .card__image {
+.card:hover#spider-man-03 .card__image {
     transform: scale(1.15);
 }
 
@@ -204,10 +238,10 @@ body[id^="spider-man-"]::before {
     opacity: 1;
 }
 
-body[id^="spider-man-"] .card:not(.card--hovered) {
+body[id^="spider-man-"] .card:not(:hover) {
     filter: grayscale(100%);
 }
 
-.card--hovered .card__title {
+.card:hover .card__title {
     bottom: 50%;
 }

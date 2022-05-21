@@ -1,18 +1,15 @@
 function handleCardMouseEnter() {
-    this.classList.add('card--hovered');
     document.body.id = `${this.id}-hovered`;
 }
 
 function handleCardMouseLeave() {
-    this.classList.remove('card--hovered');
     document.body.id = '';
 }
 
 function addEventListenersToCards() {
     const cardElements = document.getElementsByClassName('card');
 
-    for (let i = 0; i < cardElements.length; i++) {
-        const card = cardElements[i];
+    for (card of cardElements) {
         card.addEventListener("mouseenter", handleCardMouseEnter);
         card.addEventListener("mouseleave", handleCardMouseLeave);
     }
@@ -47,8 +44,7 @@ function selectCarouselItem() {
 function addEventListenerToControllers() {
     const controllerElements = document.getElementsByClassName('controller__button');
 
-    for (let i = 0; i < controllerElements.length; i++) {
-        const controller = controllerElements[i];
+    for (controller of controllerElements) {
         controller.addEventListener("click", selectCarouselItem);
     };
 }

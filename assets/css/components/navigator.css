@@ -27,6 +27,7 @@
 }
 
 .navigator ul li {
+    position: relative;
     margin: 60px 0;
 }
 
@@ -38,21 +39,26 @@
     margin-bottom: 0;
 }
 
-.navigator ul li a {
-    border: solid 2px #FFF;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #000;
+.navigator__link {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    width: 45px;
+    height: 45px;
+    border: solid 2px #FFF;
+    border-radius: 50%;
+    background-color: #000;
+    transition: transform 0.3s ease;
 }
 
-.navigator ul li a:hover,
-.navigator ul li a:active {
+.navigator__link:hover,
+.navigator__link:active {
+    transform: scale(1.1);
+}
+
+.navigator__link--active {
     color: var(--primary-color);
+    border: 3px solid var(--primary-color);
     background: #FFF;
+    box-shadow: 0 0 0 2px  #FFF;
 }
